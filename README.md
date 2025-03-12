@@ -51,14 +51,37 @@ docker run -d -p 8080:80 -e WEBSITE_AUTHOR="Dein Name" -e WEBSITE_VERSION="2.0" 
 ## Auf Docker Hub veröffentlichen
 
 ```bash
+# Username als Variable definieren (zur einfacheren Wiederverwendung)
+export DOCKER_USERNAME=dein-username
+
 # Anmelden
 docker login
 
 # Image taggen
-docker tag docker-workshop-webserver DEIN-USERNAME/docker-workshop-webserver:1.0
+docker tag docker-workshop-webserver $DOCKER_USERNAME/docker-workshop-webserver:1.0
 
 # Image pushen
-docker push DEIN-USERNAME/docker-workshop-webserver:1.0
+docker push $DOCKER_USERNAME/docker-workshop-webserver:1.0
+
+# Image von Docker Hub pullen (in einer anderen Umgebung)
+docker pull $DOCKER_USERNAME/docker-workshop-webserver:1.0
+```
+
+### Simulation eines anderen Systems
+
+Um zu demonstrieren, wie jemand anderes dein Image nutzen kann:
+
+```bash
+# Lokale Images entfernen (simuliert anderes System)
+docker rm -f meine-website           # Falls Container noch läuft
+docker rmi docker-workshop-webserver  # Lokales Image löschen
+docker rmi $DOCKER_USERNAME/docker-workshop-webserver:1.0  # Getaggtes Image löschen
+
+# Image von Docker Hub pullen
+docker pull $DOCKER_USERNAME/docker-workshop-webserver:1.0
+
+# Container mit gepulltem Image starten
+docker run -d -p 8080:80 --name pulled-website $DOCKER_USERNAME/docker-workshop-webserver:1.0
 ```
 
 ## Referenzierte Befehle
