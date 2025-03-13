@@ -39,6 +39,7 @@ jobs:
           context: build/.
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
+          platforms: linux/amd64,linux/arm64
           build-args: |
             VERSION=${{ github.sha }}
             BUILD_DATE=$(date -u +'%Y-%m-%d %H:%M:%S')
