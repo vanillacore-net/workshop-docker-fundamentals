@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Workshop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Willkommen zum Docker Workshop</h1>
+        </header>
+        
+        <main>
+            <p>Diese Webseite läuft in einem selbst erstellten Docker-Container und dient als Referenz für die wichtigsten Docker Befehle.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <h3>Einfach</h3>
+                    <p>Mit nur wenigen Befehlen können wir Container erstellen und verwalten.</p>
+                </div>
+                
+                <div class="feature">
+                    <h3>Portabel</h3>
+                    <p>Container können auf verschiedenen Umgebungen identisch ausgeführt werden.</p>
+                </div>
+                
+                <div class="feature">
+                    <h3>Isoliert</h3>
+                    <p>Jeder Container läuft in seiner eigenen Umgebung.</p>
+                </div>
+            </div>
+
+            <section class="command-reference">
+                <h2>Docker Befehls-Referenz</h2>
+                
+                <div class="command-category">
+                    <h3>Container Management</h3>
+                    <table>
+                        <tr>
+                            <td><code>docker run IMAGE</code></td>
+                            <td>Container starten</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker ps</code></td>
+                            <td>Laufende Container anzeigen</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker ps -a</code></td>
+                            <td>Alle Container anzeigen (auch beendete)</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker exec -it CONTAINER BEFEHL</code></td>
+                            <td>Befehl in laufendem Container ausführen</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker stop CONTAINER</code></td>
+                            <td>Container anhalten</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker rm CONTAINER</code></td>
+                            <td>Container löschen</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="command-category">
+                    <h3>Image Management</h3>
+                    <table>
+                        <tr>
+                            <td><code>docker images</code></td>
+                            <td>Verfügbare Images anzeigen</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker build -t NAME .</code></td>
+                            <td>Image aus Dockerfile erstellen</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker rmi IMAGE</code></td>
+                            <td>Image löschen</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker tag IMAGE:TAG NEUER_NAME:TAG</code></td>
+                            <td>Image umbenennen/taggen</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="command-category">
+                    <h3>Volume & Netzwerk</h3>
+                    <table>
+                        <tr>
+                            <td><code>docker volume create NAME</code></td>
+                            <td>Volume erstellen</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker volume ls</code></td>
+                            <td>Volumes auflisten</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker run -v VOLUME:PFAD IMAGE</code></td>
+                            <td>Container mit Volume starten</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker run -p HOST:CONTAINER IMAGE</code></td>
+                            <td>Port-Mapping einrichten</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="command-category">
+                    <h3>Docker Hub</h3>
+                    <table>
+                        <tr>
+                            <td><code>docker login</code></td>
+                            <td>Bei Docker Hub anmelden</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker push USER/IMAGE:TAG</code></td>
+                            <td>Image zu Docker Hub pushen</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker pull IMAGE:TAG</code></td>
+                            <td>Image von Docker Hub holen</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Erstellt im Rahmen des Docker Workshops - <span id="current-year"></span></p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

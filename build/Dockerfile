@@ -4,9 +4,7 @@ FROM node:18 AS builder
 WORKDIR /app
 
 # Copy existing static files
-COPY ../docker/*.html /app
-COPY ../docker/*.css /app
-
+COPY ./*.html /app
 
 # Simulate a "build step" (if needed, e.g., minification, bundling)
 RUN npm install -g minify && minify --output /app/index.min.html /app/index.html
@@ -23,7 +21,8 @@ RUN rm -rf ./*
 COPY --from=builder /app/index.min.html /usr/share/nginx/html/index.html
 
 # Copy other assets directly from source (CSS, JS, images, etc.)
-COPY ./website /usr/share/nginx/html/
+COPY ./*.css /usr/share/nginx/html/
 
 # Expose port 80 (default for NGINX)
 EXPOSE 80
+
