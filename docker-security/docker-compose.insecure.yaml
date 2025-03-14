@@ -1,14 +1,15 @@
 services:
   webapp:
-    image: wordpress:latest
+    image: wordpress:latest 
     ports:
-      - "80:80"
+      - "80:80" 
     volumes:
       - ./wp-content:/var/www/html/wp-content
-      - /var/run/docker.sock:/var/run/docker.sock
-  
+      - /var/run/docker.sock:/var/run/docker.sock 
+    privileged: true 
+
   db:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password 
       MYSQL_DATABASE: wordpress

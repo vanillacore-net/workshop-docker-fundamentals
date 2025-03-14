@@ -1,6 +1,6 @@
 services:
   webapp:
-    image: wordpress:5.9.3-php8.0-apache
+    image: wordpress:5.9.3-php8.0-apache 
     user: "33:33"  # www-data
     ports:
       - "8080:8080"
@@ -27,4 +27,13 @@ services:
       resources:
         limits:
           cpus: '0.5'
-          memory: 500M
+          memory: 
+          
+volumes:
+  db_data:
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  db_root_password:
+    file: ./secrets/db_root_password.txt
